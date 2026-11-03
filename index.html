@@ -30,16 +30,23 @@
             pointer-events: none;
         }
 
-        /* 3D Initial Logo in Top Right Corner */
-        #logo-container {
+        /* 3D Initial Logos in Corners */
+        .corner-logo {
             position: fixed;
             top: 25px;
-            right: 25px;
             width: 90px;
             height: 90px;
             z-index: 10;
             pointer-events: auto;
             cursor: pointer;
+        }
+
+        #logo-container-left {
+            left: 25px;
+        }
+
+        #logo-container-right {
+            right: 25px;
         }
 
         .content {
@@ -303,10 +310,15 @@
             .info-title {
                 flex: none;
             }
-            #logo-container {
+            .corner-logo {
                 width: 70px;
                 height: 70px;
                 top: 15px;
+            }
+            #logo-container-left {
+                left: 15px;
+            }
+            #logo-container-right {
                 right: 15px;
             }
         }
@@ -315,7 +327,8 @@
 <body>
 
     <div id="canvas-container"></div>
-    <div id="logo-container"></div>
+    <div id="logo-container-left" class="corner-logo"></div>
+    <div id="logo-container-right" class="corner-logo"></div>
 
     <div class="content">
         <header>
@@ -485,53 +498,64 @@
         camera.position.z = 15;
 
 
-        // 2. Top Right Corner 3D M×V Logo Setup (Side-to-side tilting, no rotation)
-        const logoContainer = document.getElementById('logo-container');
-        const logoScene = new THREE.Scene();
-        const logoCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-        const logoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        // 2. Setup Function for 3D Initial Logo in Corners
+        function initCornerLogo(containerId, isLeft) {
+            const logoContainer = document.getElementById(containerId);
+            const logoScene = new THREE.Scene();
+            const logoCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+            const logoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-        logoRenderer.setSize(logoContainer.clientWidth, logoContainer.clientHeight);
-        logoRenderer.setPixelRatio(window.devicePixelRatio);
-        logoContainer.appendChild(logoRenderer.domElement);
+            logoRenderer.setSize(logoContainer.clientWidth, logoContainer.clientHeight);
+            logoRenderer.setPixelRatio(window.devicePixelRatio);
+            logoContainer.appendChild(logoRenderer.domElement);
 
-        const logoGroup = new THREE.Group();
-        logoScene.add(logoGroup);
+            const logoGroup = new THREE.Group();
+            logoScene.add(logoGroup);
 
-        const textLoader = new THREE.FontLoader();
-        textLoader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', function(font) {
-            const textSettings = {
-                font: font,
-                size: 1.2,
-                height: 0.4,
-                curveSegments: 4,
-                bevelEnabled: true,
-                bevelThickness: 0.08,
-                bevelSize: 0.05,
-                bevelSegments: 3
-            };
+            const textLoader = new THREE.FontLoader();
+            let logoMesh;
+            let logoMat;
 
-            const mGeo = new THREE.TextGeometry('M×V', textSettings);
-            mGeo.center();
+            textLoader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', function(font) {
+                const textSettings = {
+                    font: font,
+                    size: 1.2,
+                    height: 0.4,
+                    curveSegments: 4,
+                    bevelEnabled: true,
+                    bevelThickness: 0.08,
+                    bevelSize: 0.05,
+                    bevelSegments: 3
+                };
 
-            const mMat = new THREE.MeshPhysicalMaterial({
-                color: 0xff758c,
-                roughness: 0.2,
-                metalness: 0.4,
-                clearcoat: 1.0,
-                emissive: 0x3a001a
+                const mGeo = new THREE.TextGeometry('M×V', textSettings);
+                mGeo.center();
+
+                logoMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xff758c,
+                    roughness: 0.2,
+                    metalness: 0.4,
+                    clearcoat: 1.0,
+                    emissive: 0xff3366,
+                    emissiveIntensity: 0.5
+                });
+
+                logoMesh = new THREE.Mesh(mGeo, logoMat);
+                logoGroup.add(logoMesh);
             });
 
-            const logoMesh = new THREE.Mesh(mGeo, mMat);
-            logoGroup.add(logoMesh);
-        });
+            const logoLight = new THREE.PointLight(0xff758c, 3, 50);
+            logoLight.position.set(5, 5, 10);
+            logoScene.add(logoLight);
+            logoScene.add(new THREE.AmbientLight(0xffffff, 1.2));
 
-        const logoLight = new THREE.PointLight(0xffffff, 2, 50);
-        logoLight.position.set(5, 5, 10);
-        logoScene.add(logoLight);
-        logoScene.add(new THREE.AmbientLight(0xffffff, 1.0));
+            logoCamera.position.z = 7;
 
-        logoCamera.position.z = 7;
+            return { renderer: logoRenderer, scene: logoScene, camera: logoCamera, group: logoGroup, material: () => logoMat };
+        }
+
+        const leftLogo = initCornerLogo('logo-container-left', true);
+        const rightLogo = initCornerLogo('logo-container-right', false);
 
         let mouseX = 0, mouseY = 0;
         window.addEventListener('mousemove', (e) => {
@@ -541,9 +565,13 @@
 
 
         // 3. Main Animation Loop
+        let clock = new THREE.Clock();
         function animate() {
             requestAnimationFrame(animate);
 
+            let elapsedTime = clock.getElapsedTime();
+
+            // Heart animation
             heartMesh.rotation.y += 0.015;
 
             const positions = particleGeometry.attributes.position.array;
@@ -558,10 +586,19 @@
 
             renderer.render(scene, camera);
 
-            logoGroup.rotation.y = mouseX * 0.4;
-            logoGroup.rotation.x = -mouseY * 0.4;
+            // Side-to-side tilt & Rhythmic Glowing/Pulsing for Corner Logos
+            let pulse = Math.sin(elapsedTime * 3) * 0.5 + 0.5; // Heartbeat rhythm
 
-            logoRenderer.render(logoScene, logoCamera);
+            [leftLogo, rightLogo].forEach(logo => {
+                logo.group.rotation.y = mouseX * 0.4;
+                logo.group.rotation.x = -mouseY * 0.4;
+
+                if (logo.material()) {
+                    logo.material().emissiveIntensity = 0.3 + (pulse * 0.9);
+                }
+
+                logo.renderer.render(logo.scene, logo.camera);
+            });
         }
         animate();
 
