@@ -331,13 +331,14 @@
             <h2>The Universe Wrote Our Story 💖</h2>
             <ul class="details-list">
                 <li><span>💜💗</span> <strong>Your favourite colours:</strong> Purple & Pink (The exact hues of my universe)</li>
+                <li><span>🎶🎧</span> <strong>Your favourite song:</strong> "Dil Tu Jaan Tu" (The melody playing in my heart whenever I think of you)</li>
                 <li><span>🌸✨</span> <strong>The Meaning of Your Name:</strong> Mugdha means infatuated, charmed, and utterly captivating—just how you leave me every single day.</li>
                 <li><span>👑✨</span> You are my absolute queen, reigning over my heart forever</li>
             </ul>
             <div class="info-row">
                 <div class="info-title">Where Eternity Began</div>
                 <div class="info-text">
-                    Do you still feel the phantom thrill of the exact moment our hands first brushed and our fingers intertwined? It was clumsy, wonderfully awkward, and yet it remains the most sacred bookmark of my existence. True to your name, Mugdha—meaning delightfully charmed and captivating—you completely spellbound my senses from that very first afternoon, and every single heartbeat since has been a melody dedicated solely to you.
+                    Do you still feel the phantom thrill of the exact moment our hands first brushed and our fingers intertwined? It was clumsy, wonderfully awkward, and yet it remains the most sacred bookmark of my existence. True to your name, Mugdha—meaning delightfully charmed and captivating—you completely spellbound my senses from that very first afternoon, echoing every beat like your favorite song, "Dil Tu Jaan Tu."
                 </div>
             </div>
             <div class="info-row">
@@ -353,7 +354,7 @@
 
             <div class="flow-item">
                 <h3>What Is Real Love? ✨</h3>
-                <p>Before your eyes anchored my world, love was merely a concept trapped in ink and paper. Walking beside you through these 365 days transformed love into a living, breathing pulse. True to your name, Mugdha—captivating, innocent, and enchanting—you brought a spellbinding grace into my reality. Love is not found solely in roaring fireworks, but in the quiet, unspoken glances across a room, the way your laughter effortlessly rewrites my worst days, and how your mere presence turns absolute chaos into profound peace.</p>
+                <p>Before your eyes anchored my world, love was merely a concept trapped in ink and paper. Walking beside you through these 365 days transformed love into a living, breathing pulse. True to your name, Mugdha—captivating, innocent, and enchanting—you brought a spellbinding grace into my reality. Love is not found solely in roaring fireworks, but in the quiet, unspoken glances across a room, the way your laughter effortlessly rewrites my worst days, and how your mere presence turns absolute chaos into profound peace, sounding just like "Dil Tu Jaan Tu" playing softly in the background.</p>
             </div>
 
             <div class="flow-image">
@@ -371,7 +372,7 @@
 
             <div class="flow-item">
                 <h3>Why Every Beat Belongs To You 🔥</h3>
-                <p>People often wonder what magic made me choose you, blind to the obvious truth: how could any sane soul ever *not* choose you? As a Mugdha—one who enchants and deeply captivates—you are tethered to my core because your smile instantly dissolves my darkest shadows. You challenge my mind to expand, believe in me when my own reflection whispers doubt, and love my shattered edges into wholeness.</p>
+                <p>People often wonder what magic made me choose you, blind to the obvious truth: how could any sane soul ever *not* choose you? As a Mugdha—one who enchants and deeply captivates—you are tethered to my core because your smile instantly dissolves my darkest shadows. You challenge my mind to expand, believe in me when my own reflection whispers doubt, and love my shattered edges into wholeness just like the heartfelt lyrics of "Dil Tu Jaan Tu."</p>
             </div>
 
             <div class="flow-image">
@@ -498,7 +499,6 @@
         logoScene.add(logoGroup);
 
         const textLoader = new THREE.FontLoader();
-        // Using standard typeface loaded safely via CDN
         textLoader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', function(font) {
             const textSettings = {
                 font: font,
@@ -533,7 +533,6 @@
 
         logoCamera.position.z = 7;
 
-        // Mouse interaction for side-to-side tilting without full rotation
         let mouseX = 0, mouseY = 0;
         window.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -545,7 +544,6 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            // Heart animation
             heartMesh.rotation.y += 0.015;
 
             const positions = particleGeometry.attributes.position.array;
@@ -560,7 +558,6 @@
 
             renderer.render(scene, camera);
 
-            // Side-to-side tilt effect for M×V logo based on mouse position (clamped and non-rotating)
             logoGroup.rotation.y = mouseX * 0.4;
             logoGroup.rotation.x = -mouseY * 0.4;
 
@@ -568,7 +565,6 @@
         }
         animate();
 
-        // Responsive handling
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
