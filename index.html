@@ -30,6 +30,18 @@
             pointer-events: none;
         }
 
+        /* 3D Initial Logo in Top Right Corner */
+        #logo-container {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 90px;
+            height: 90px;
+            z-index: 10;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
         .content {
             position: relative;
             z-index: 2;
@@ -233,6 +245,43 @@
             transform: scale(1.08);
         }
 
+        .interactive-footer-card {
+            background: #000000;
+            border: 2px solid #ff758c;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(255, 117, 140, 0.25);
+            width: 100%;
+            text-align: center;
+        }
+
+        .interactive-footer-card p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #ebdffb;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .chat-link-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 0 25px rgba(255, 117, 140, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chat-link-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(218, 112, 214, 0.6);
+        }
+
         footer {
             margin-bottom: 60px;
         }
@@ -254,12 +303,19 @@
             .info-title {
                 flex: none;
             }
+            #logo-container {
+                width: 70px;
+                height: 70px;
+                top: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div id="canvas-container"></div>
+    <div id="logo-container"></div>
 
     <div class="content">
         <header>
@@ -329,6 +385,11 @@
 
         </div>
 
+        <div class="interactive-footer-card">
+            <p>How was this little letter, my love? Just so you know, I wrote every single word of it with all my heart and all my love for you 😘</p>
+            <a href="https://editex07.github.io/redline-chat/" target="_blank" class="chat-link-btn">Open Our Special Chat 💬</a>
+        </div>
+
         <footer>
             <div class="signature">to my wife from her husband, happy anniversary</div>
         </footer>
@@ -337,7 +398,7 @@
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js Scene Setup (Upright Heart + Background Constellation Particles)
+        // 1. Background Scene Setup (Heart + Constellation Particles)
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -347,7 +408,6 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Background Animated Pink Dots Constellation
         const particleCount = 75;
         const particleGeometry = new THREE.BufferGeometry();
         const particlePositions = new Float32Array(particleCount * 3);
@@ -374,7 +434,6 @@
         const particles = new THREE.Points(particleGeometry, particleMaterial);
         scene.add(particles);
 
-        // Create Heart Shape Geometry
         const x = 0, y = 0;
         const heartShape = new THREE.Shape();
         heartShape.moveTo(x + 5, y + 5);
@@ -411,7 +470,6 @@
         heartMesh.scale.set(0.25, 0.25, 0.25);
         scene.add(heartMesh);
 
-        // Lighting
         const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
         scene.add(ambientLight);
 
@@ -425,10 +483,69 @@
 
         camera.position.z = 15;
 
-        // Animation Loop
+
+        // 2. Top Right Corner 3D M×V Logo Setup (Side-to-side tilting, no rotation)
+        const logoContainer = document.getElementById('logo-container');
+        const logoScene = new THREE.Scene();
+        const logoCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+        const logoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        logoRenderer.setSize(logoContainer.clientWidth, logoContainer.clientHeight);
+        logoRenderer.setPixelRatio(window.devicePixelRatio);
+        logoContainer.appendChild(logoRenderer.domElement);
+
+        const logoGroup = new THREE.Group();
+        logoScene.add(logoGroup);
+
+        const textLoader = new THREE.FontLoader();
+        // Using standard typeface loaded safely via CDN
+        textLoader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', function(font) {
+            const textSettings = {
+                font: font,
+                size: 1.2,
+                height: 0.4,
+                curveSegments: 4,
+                bevelEnabled: true,
+                bevelThickness: 0.08,
+                bevelSize: 0.05,
+                bevelSegments: 3
+            };
+
+            const mGeo = new THREE.TextGeometry('M×V', textSettings);
+            mGeo.center();
+
+            const mMat = new THREE.MeshPhysicalMaterial({
+                color: 0xff758c,
+                roughness: 0.2,
+                metalness: 0.4,
+                clearcoat: 1.0,
+                emissive: 0x3a001a
+            });
+
+            const logoMesh = new THREE.Mesh(mGeo, mMat);
+            logoGroup.add(logoMesh);
+        });
+
+        const logoLight = new THREE.PointLight(0xffffff, 2, 50);
+        logoLight.position.set(5, 5, 10);
+        logoScene.add(logoLight);
+        logoScene.add(new THREE.AmbientLight(0xffffff, 1.0));
+
+        logoCamera.position.z = 7;
+
+        // Mouse interaction for side-to-side tilting without full rotation
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+
+        // 3. Main Animation Loop
         function animate() {
             requestAnimationFrame(animate);
 
+            // Heart animation
             heartMesh.rotation.y += 0.015;
 
             const positions = particleGeometry.attributes.position.array;
@@ -442,6 +559,12 @@
             particleGeometry.attributes.position.needsUpdate = true;
 
             renderer.render(scene, camera);
+
+            // Side-to-side tilt effect for M×V logo based on mouse position (clamped and non-rotating)
+            logoGroup.rotation.y = mouseX * 0.4;
+            logoGroup.rotation.x = -mouseY * 0.4;
+
+            logoRenderer.render(logoScene, logoCamera);
         }
         animate();
 
