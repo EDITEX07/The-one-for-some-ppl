@@ -13,19 +13,13 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1, #fbc2eb);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-color: #0b0612;
+            background-image: radial-gradient(circle at 50% 20%, rgba(123, 31, 162, 0.25) 0%, transparent 60%),
+                              radial-gradient(circle at 10% 80%, rgba(255, 77, 148, 0.15) 0%, transparent 50%);
             font-family: 'Poppins', sans-serif;
-            color: #fff;
+            color: #f3e8ff;
             overflow-x: hidden;
             min-height: 100vh;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         #canvas-container {
@@ -43,7 +37,7 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -51,75 +45,86 @@
         }
 
         header {
-            margin-top: 40px;
-            margin-bottom: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
         h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 600;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(218, 112, 214, 0.3);
             margin-bottom: 10px;
         }
 
         .hero-message {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(18, 10, 30, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(218, 112, 214, 0.2);
             border-radius: 20px;
-            padding: 30px;
+            padding: 35px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 117, 140, 0.05);
             width: 100%;
         }
 
         .hero-message p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1.25rem;
+            line-height: 1.7;
             font-weight: 300;
+            color: #fae8ff;
         }
 
         .section-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(18, 10, 30, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(218, 112, 214, 0.2);
             border-radius: 20px;
-            padding: 35px;
+            padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
             width: 100%;
             text-align: left;
         }
 
         .section-card h2 {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
             font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 10px;
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 1px solid rgba(218, 112, 214, 0.2);
+            padding-bottom: 12px;
         }
 
         .details-list {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .details-list li {
             font-size: 1.1rem;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: #ebdffb;
         }
 
         .story-paragraph {
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.9;
             font-weight: 300;
+            color: #ebdffb;
             margin-top: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .gallery {
@@ -132,15 +137,15 @@
         }
 
         .tilt-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(18, 10, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(218, 112, 214, 0.2);
             border-radius: 15px;
             overflow: hidden;
             height: 250px;
             transform-style: preserve-3d;
             transition: transform 0.1s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .tilt-card img {
@@ -157,8 +162,10 @@
         .signature {
             font-family: 'Great Vibes', cursive;
             font-size: clamp(2.5rem, 5vw, 3.8rem);
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            color: #fff;
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(218, 112, 214, 0.3);
         }
     </style>
 </head>
@@ -183,7 +190,13 @@
                 <li><span>👑✨</span> You are a pretty little queen, the prettiest one</li>
             </ul>
             <p class="story-paragraph">
-                You remember the moment when we first held hands? Awkward, right, but memorable. On this day in the afternoon, we confessed—remember it clearly?? All the moments we spent in the last year were so good and lovely. Mugdha, I really am blessed to have u as my wife... Our love has proved we are ready-made for each other. All the times we got caught but didn't give up... All the times you smiled and blushed and all the time u gave me hope to keep trying, is just not suitable for words to explain. It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
+                You remember the moment when we first held hands? Awkward, right, but memorable. On this day in the afternoon, we confessed—remember it clearly?? All the moments we spent in the last year were so good and lovely.
+            </p>
+            <p class="story-paragraph">
+                Mugdha, I really am blessed to have u as my wife... Our love has proved we are ready-made for each other. All the times we got caught but didn't give up... All the times you smiled and blushed and all the time u gave me hope to keep trying, is just not suitable for words to explain.
+            </p>
+            <p class="story-paragraph">
+                It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
             </p>
         </div>
 
@@ -207,7 +220,7 @@
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js 3D Rotating Heart Setup
+        // Three.js 3D Upright Rotating Heart Setup
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -238,15 +251,18 @@
         };
 
         const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-        geometry.center(); // Center the geometry origin
+        geometry.center(); // Center geometry
+
+        // Rotate geometry 180 degrees around X-axis so it stands completely upright
+        geometry.rotateX(Math.PI);
 
         const material = new THREE.MeshPhysicalMaterial({
             color: 0xff3366,
-            roughness: 0.3,
-            metalness: 0.2,
+            roughness: 0.2,
+            metal_ness: 0.3,
             clearcoat: 1.0,
             clearcoatRoughness: 0.1,
-            emissive: 0x550022
+            emissive: 0x4a0025
         });
 
         const heartMesh = new THREE.Mesh(geometry, material);
@@ -257,17 +273,17 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
         scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight(0xff80bf, 2, 50);
+        const pointLight = new THREE.PointLight(0xff758c, 3, 50);
         pointLight.position.set(10, 10, 10);
         scene.add(pointLight);
 
-        const pointLight2 = new THREE.PointLight(0xda70d6, 1.5, 50);
+        const pointLight2 = new THREE.PointLight(0xda70d6, 2, 50);
         pointLight2.position.set(-10, -10, 10);
         scene.add(pointLight2);
 
         camera.position.z = 15;
 
-        // Animation Loop (Rotating on Y axis)
+        // Animation Loop (Y-axis rotation)
         function animate() {
             requestAnimationFrame(animate);
             heartMesh.rotation.y += 0.015;
@@ -297,12 +313,12 @@
                 const rotateY = ((x - centerX) / centerX) * 15;
 
                 card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-                card.style.boxShadow = `${-rotateY}px ${rotateX}px 25px rgba(0,0,0,0.3)`;
+                card.style.boxShadow = `${-rotateY}px ${rotateX}px 25px rgba(218,112,214,0.2)`;
             });
 
             card.addEventListener('mouseleave', () => {
-                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)';`;
-                card.style.boxShadow = `0 10px 30px rgba(0,0,0,0.2)`;
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+                card.style.boxShadow = `0 10px 30px rgba(0,0,0,0.4)`;
             });
         });
     </script>
