@@ -498,7 +498,7 @@
         camera.position.z = 15;
 
 
-        // 2. Setup Function for 3D Initial Logo in Corners (using custom HTML/CSS 3D transform instead of broken font loader)
+        // 2. Setup Function for 3D Initial Logo in Corners (M&V)
         function initCornerLogo(containerId) {
             const container = document.getElementById(containerId);
             container.style.perspective = '600px';
@@ -520,7 +520,7 @@
                 transform-style: preserve-3d;
                 transition: transform 0.1s ease-out;
             `;
-            wrapper.innerHTML = 'M+V';
+            wrapper.innerHTML = 'M&V';
             container.appendChild(wrapper);
 
             return wrapper;
