@@ -13,9 +13,7 @@
         }
 
         body {
-            background-color: #0b0612;
-            background-image: radial-gradient(circle at 50% 20%, rgba(123, 31, 162, 0.25) 0%, transparent 60%),
-                              radial-gradient(circle at 10% 80%, rgba(255, 77, 148, 0.15) 0%, transparent 50%);
+            background-color: #000000;
             font-family: 'Poppins', sans-serif;
             color: #f3e8ff;
             overflow-x: hidden;
@@ -55,19 +53,17 @@
             background: linear-gradient(135deg, #ff758c, #da70d6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 25px rgba(218, 112, 214, 0.3);
+            text-shadow: 0 4px 25px rgba(255, 117, 140, 0.4);
             margin-bottom: 10px;
         }
 
         .hero-message {
-            background: rgba(18, 10, 30, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(218, 112, 214, 0.2);
+            background: #000000;
+            border: 2px solid #ff758c;
             border-radius: 20px;
             padding: 35px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 117, 140, 0.05);
+            box-shadow: 0 0 25px rgba(255, 117, 140, 0.2);
             width: 100%;
         }
 
@@ -79,14 +75,12 @@
         }
 
         .section-card {
-            background: rgba(18, 10, 30, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(218, 112, 214, 0.2);
+            background: #000000;
+            border: 2px solid #ff758c;
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 117, 140, 0.2);
             width: 100%;
             text-align: left;
         }
@@ -99,7 +93,7 @@
             background: linear-gradient(135deg, #ff758c, #da70d6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border-bottom: 1px solid rgba(218, 112, 214, 0.2);
+            border-bottom: 1px solid rgba(255, 117, 140, 0.3);
             padding-bottom: 12px;
         }
 
@@ -124,7 +118,7 @@
             color: #ebdffb;
             margin-top: 15px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 117, 140, 0.15);
         }
 
         .gallery {
@@ -137,15 +131,14 @@
         }
 
         .tilt-card {
-            background: rgba(18, 10, 30, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(218, 112, 214, 0.2);
+            background: #000000;
+            border: 2px solid #da70d6;
             border-radius: 15px;
             overflow: hidden;
             height: 250px;
             transform-style: preserve-3d;
             transition: transform 0.1s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 0 20px rgba(218, 112, 214, 0.2);
         }
 
         .tilt-card img {
@@ -165,7 +158,7 @@
             background: linear-gradient(135deg, #ff758c, #da70d6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 20px rgba(218, 112, 214, 0.3);
+            text-shadow: 0 4px 20px rgba(218, 112, 214, 0.4);
         }
     </style>
 </head>
@@ -197,6 +190,26 @@
             </p>
             <p class="story-paragraph">
                 It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
+            </p>
+        </div>
+
+        <div class="section-card">
+            <h2>What Is Love?</h2>
+            <p class="story-paragraph">
+                Before you, love was just a word found in stories and poems. But spending this past year with you taught me its true definition. Love is not about grand gestures every single day; it is found in the quiet glances, the way you laugh at my silliest jokes, and how effortlessly you make everything feel right even in the middle of chaos.
+            </p>
+            <p class="story-paragraph">
+                Love is finding a permanent home in someone else's soul, a safe harbor where you can drop all your armor and simply be. It is patience, forgiveness, and an unshakable choice to stand side-by-side no matter what life throws our way.
+            </p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why Am I With You?</h2>
+            <p class="story-paragraph">
+                People often ask what made me choose you, but the real question is how could anyone *not* choose you? I am with you because your smile has the power to fix my worst days, and your presence brings a peace to my mind that I never knew existed.
+            </p>
+            <p class="story-paragraph">
+                You challenge me to grow, you believe in me when I doubt myself, and you love me with all my flaws. Every second spent with you feels effortless and sacred. I am with you because out of all the paths this world offered, holding your hand was the only one that ever made complete sense.
             </p>
         </div>
 
@@ -251,15 +264,13 @@
         };
 
         const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-        geometry.center(); // Center geometry
-
-        // Rotate geometry 180 degrees around X-axis so it stands completely upright
+        geometry.center();
         geometry.rotateX(Math.PI);
 
         const material = new THREE.MeshPhysicalMaterial({
             color: 0xff3366,
             roughness: 0.2,
-            metal_ness: 0.3,
+            metalness: 0.3,
             clearcoat: 1.0,
             clearcoatRoughness: 0.1,
             emissive: 0x4a0025
@@ -283,7 +294,7 @@
 
         camera.position.z = 15;
 
-        // Animation Loop (Y-axis rotation)
+        // Animation Loop
         function animate() {
             requestAnimationFrame(animate);
             heartMesh.rotation.y += 0.015;
@@ -313,12 +324,12 @@
                 const rotateY = ((x - centerX) / centerX) * 15;
 
                 card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-                card.style.boxShadow = `${-rotateY}px ${rotateX}px 25px rgba(218,112,214,0.2)`;
+                card.style.boxShadow = `0 0 25px rgba(255,117,140,0.4)`;
             });
 
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-                card.style.boxShadow = `0 10px 30px rgba(0,0,0,0.4)`;
+                card.style.boxShadow = `0 0 20px rgba(218,112,214,0.2)`;
             });
         });
     </script>
