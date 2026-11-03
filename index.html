@@ -344,7 +344,7 @@
             <h2>The Universe Wrote Our Story 💖</h2>
             <ul class="details-list">
                 <li><span>💜💗</span> <strong>Your favourite colours:</strong> Purple & Pink (The exact hues of my universe)</li>
-                <li><span>🎶🎧</span> <strong>Your favourite song:</strong> "Dil Tu Jaan Tu"</li>
+                <li><span>🎶🎧</span> <strong>Your favourite song:</strong> Dil tu Jaan tu</li>
                 <li><span>🌸✨</span> <strong>The Meaning of Your Name:</strong> Mugdha means infatuated, charmed, and utterly captivating—just how you leave me every single day.</li>
                 <li><span>👑✨</span> You are my absolute queen, reigning over my heart forever</li>
             </ul>
@@ -498,60 +498,32 @@
         camera.position.z = 15;
 
 
-        // 2. Setup Function for 3D Initial Logo in Corners
+        // 2. Setup Function for 3D Initial Logo in Corners (using custom HTML/CSS 3D transform instead of broken font loader)
         function initCornerLogo(containerId) {
-            const logoContainer = document.getElementById(containerId);
-            const logoScene = new THREE.Scene();
-            const logoCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-            const logoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            const container = document.getElementById(containerId);
+            container.style.perspective = '600px';
 
-            logoRenderer.setSize(logoContainer.clientWidth, logoContainer.clientHeight);
-            logoRenderer.setPixelRatio(window.devicePixelRatio);
-            logoContainer.appendChild(logoRenderer.domElement);
+            const wrapper = document.createElement('div');
+            wrapper.style.cssText = `
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #ff758c, #da70d6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 0 0 15px rgba(255, 117, 140, 0.6);
+                transform-style: preserve-3d;
+                transition: transform 0.1s ease-out;
+            `;
+            wrapper.innerHTML = 'M+V';
+            container.appendChild(wrapper);
 
-            const logoGroup = new THREE.Group();
-            logoScene.add(logoGroup);
-
-            const textLoader = new THREE.FontLoader();
-            let logoMesh;
-            let logoMat;
-
-            textLoader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', function(font) {
-                const textSettings = {
-                    font: font,
-                    size: 1.2,
-                    height: 0.4,
-                    curveSegments: 4,
-                    bevelEnabled: true,
-                    bevelThickness: 0.08,
-                    bevelSize: 0.05,
-                    bevelSegments: 3
-                };
-
-                const mGeo = new THREE.TextGeometry('M×V', textSettings);
-                mGeo.center();
-
-                logoMat = new THREE.MeshPhysicalMaterial({
-                    color: 0xff758c,
-                    roughness: 0.2,
-                    metalness: 0.4,
-                    clearcoat: 1.0,
-                    emissive: 0xff3366,
-                    emissiveIntensity: 0.5
-                });
-
-                logoMesh = new THREE.Mesh(mGeo, logoMat);
-                logoGroup.add(logoMesh);
-            });
-
-            const logoLight = new THREE.PointLight(0xff758c, 3, 50);
-            logoLight.position.set(5, 5, 10);
-            logoScene.add(logoLight);
-            logoScene.add(new THREE.AmbientLight(0xffffff, 1.2));
-
-            logoCamera.position.z = 7;
-
-            return { renderer: logoRenderer, scene: logoScene, camera: logoCamera, group: logoGroup, material: () => logoMat };
+            return wrapper;
         }
 
         const leftLogo = initCornerLogo('logo-container-left');
@@ -588,16 +560,12 @@
 
             // Side-to-side tilt & Rhythmic Glowing/Pulsing for Corner Logos
             let pulse = Math.sin(elapsedTime * 3) * 0.5 + 0.5;
+            let tiltX = -mouseY * 20;
+            let tiltY = mouseX * 20;
 
             [leftLogo, rightLogo].forEach(logo => {
-                logo.group.rotation.y = mouseX * 0.4;
-                logo.group.rotation.x = -mouseY * 0.4;
-
-                if (logo.material()) {
-                    logo.material().emissiveIntensity = 0.3 + (pulse * 0.9);
-                }
-
-                logo.renderer.render(logo.scene, logo.camera);
+                logo.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${1 + pulse * 0.1})`;
+                logo.style.textShadow = `0 0 ${10 + pulse * 20}px rgba(255, 117, 140, ${0.5 + pulse * 0.5})`;
             });
         }
         animate();
