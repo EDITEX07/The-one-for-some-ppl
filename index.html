@@ -33,7 +33,7 @@
         .content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 50px 20px;
             display: flex;
@@ -74,6 +74,12 @@
             margin-bottom: 40px;
             box-shadow: 0 0 30px rgba(255, 117, 140, 0.25);
             width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-message:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(255, 117, 140, 0.4);
         }
 
         .hero-message p {
@@ -92,6 +98,12 @@
             box-shadow: 0 0 30px rgba(255, 117, 140, 0.25);
             width: 100%;
             text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 45px rgba(255, 117, 140, 0.35);
         }
 
         .section-card h2 {
@@ -107,7 +119,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Two-column layout for info and paragraphs */
         .info-row {
             display: flex;
             align-items: flex-start;
@@ -156,31 +167,70 @@
             color: #ebdffb;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+        /* Alternating Paragraph - Image - Paragraph - Image Layout */
+        .story-flow {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             margin-bottom: 50px;
+        }
+
+        .flow-item {
+            background: #000000;
+            border: 2px solid #da70d6;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 0 25px rgba(218, 112, 214, 0.2);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flow-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(218, 112, 214, 0.4);
+        }
+
+        .flow-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flow-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ebdffb;
+        }
+
+        .flow-image {
+            width: 100%;
+            height: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #ff758c;
+            box-shadow: 0 0 30px rgba(255, 117, 140, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             perspective: 1000px;
         }
 
-        .tilt-card {
-            background: #000000;
-            border: 2px solid #da70d6;
-            border-radius: 15px;
-            overflow: hidden;
-            height: 250px;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease, box-shadow 0.3s ease;
-            box-shadow: 0 0 20px rgba(218, 112, 214, 0.25);
+        .flow-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 45px rgba(255, 117, 140, 0.5);
         }
 
-        .tilt-card img {
+        .flow-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateZ(30px);
+            transition: transform 0.5s ease;
+        }
+
+        .flow-image:hover img {
+            transform: scale(1.08);
         }
 
         footer {
@@ -214,94 +264,69 @@
     <div class="content">
         <header>
             <h1>Happy 1st Anniversary, My Gorgeous Muggu ✨</h1>
-            <div class="subtitle-glow">365 Days of Loving You, And Forever to Go</div>
+            <div class="subtitle-glow">365 Days of Pure Magic, And Forever to Go</div>
         </header>
 
         <div class="hero-message">
-            <p>Congrats my love on completing our first year together—living proof that our love is absolute, real, and destined ❤️</p>
+            <p>My love, crossing this glorious milestone of our first year together is absolute proof that our souls were written in the stars ❤️</p>
         </div>
 
         <div class="section-card">
             <h2>The Universe Wrote Our Story 💖</h2>
             <ul class="details-list">
-                <li><span>💜💗</span> <strong>Your favourite colours:</strong> Purple & Pink (The shades of my world)</li>
-                <li><span>🥢🍜</span> <strong>Your favourite food:</strong> Chinese (And our favorite dates)</li>
-                <li><span>👑✨</span> You are my pretty little queen, now and for eternity</li>
+                <li><span>💜💗</span> <strong>Your favourite colours:</strong> Purple & Pink (The exact hues of my universe)</li>
+                <li><span>🥢🍜</span> <strong>Your favourite food:</strong> Chinese (And every delicious date we share)</li>
+                <li><span>👑✨</span> You are my absolute queen, reigning over my heart forever</li>
             </ul>
             <div class="info-row">
-                <div class="info-title">Where It All Began</div>
+                <div class="info-title">Where Eternity Began</div>
                 <div class="info-text">
-                    You remember the exact moment when our hands first brushed and we held fingers for the very first time? So incredibly awkward, yet it remains the most magical memory of my life. On that quiet afternoon, we confessed our hearts—do you remember it as clearly as I do? Every single second we've shared since has been a pure blessing.
+                    Do you still feel the phantom thrill of the exact moment our hands first brushed and our fingers intertwined? It was clumsy, wonderfully awkward, and yet it remains the most sacred bookmark of my existence. On that quiet afternoon, we whispered our confessions into the wind—and every single heartbeat since has been a melody dedicated solely to you.
                 </div>
             </div>
             <div class="info-row">
-                <div class="info-title">My Greatest Blessing</div>
+                <div class="info-title">My Ultimate Blessing</div>
                 <div class="info-text">
-                    Mugdha, I am endlessly grateful and deeply humbled to call you my wife. Our journey has proven beyond a doubt that we are ready-made for each other. Through every close call, every time we got caught, and every gentle blush you gave me, you always handed me the hope I needed to keep going.
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-title">The Only Words That Matter</div>
-                <div class="info-text">
-                    What we share lives far deeper than words can ever capture. If my entire soul could be distilled into a single truth, it echoes in one eternal line: <strong>I LOVE YOU, MUGGU❤️❤️</strong>
+                    Mugdha, calling you my wife is an honor that leaves me breathless. Our journey has laughed in the face of every obstacle, proving we are flawlessly handcrafted for one another. Through every close call, every time we narrowly escaped being caught, and every gorgeous blush that painted your cheeks, you handed me the courage to keep fighting for us.
                 </div>
             </div>
         </div>
 
-        <div class="section-card">
-            <h2>What Does Real Love Mean With You? ✨</h2>
-            <div class="info-row">
-                <div class="info-title">More Than Poetry</div>
-                <div class="info-text">
-                    Before you walked into my world, love was just a word written in books. Loving you over this past year taught me its actual pulse. It isn't just about grand gestures; it lives in your quiet glances, your contagious laughter at my terrible jokes, and how you effortlessly anchor my chaotic mind.
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-title">My Permanent Sanctuary</div>
-                <div class="info-text">
-                    Love is finding a permanent home in another human being's soul—a safe, sacred harbor where I can drop all my armor and just breathe. It is profound patience, endless forgiveness, and an unshakable vow to stand beside you through whatever storms come our way.
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-title">The Comfort of Silence</div>
-                <div class="info-text">
-                    It is sitting together in absolute stillness without needing to fill the air with words, knowing deep down that just having you next to me is enough to heal any heavy day.
-                </div>
-            </div>
-        </div>
+        <!-- Interactive Alternating Story Flow: Paragraph, Image, Paragraph, Image -->
+        <div class="story-flow">
 
-        <div class="section-card">
-            <h2>Why Every Beat of My Heart Belongs to You 🌹</h2>
-            <div class="info-row">
-                <div class="info-title">Your Radiance</div>
-                <div class="info-text">
-                    People often ask me what made me choose you, but the real mystery is how anyone could ever *not* choose you. I am with you because your smile instantly erases my darkest days, and your presence brings a profound peace I never knew was possible.
-                </div>
+            <div class="flow-item">
+                <h3>What Is Real Love? ✨</h3>
+                <p>Before your eyes anchored my world, love was merely a concept trapped in ink and paper. Walking beside you through these 365 days transformed love into a living, breathing pulse. It is not found solely in roaring fireworks, but in the quiet, unspoken glances across a crowded room, the way your laughter effortlessly rewrites my worst days, and how your mere presence turns absolute chaos into profound peace.</p>
             </div>
-            <div class="info-row">
-                <div class="info-title">My Inspiration & Strength</div>
-                <div class="info-text">
-                    You challenge me to become a better man, you believe in me when my own confidence falters, and you love me wholly with all my imperfections. Every single second spent wrapped in your world feels entirely sacred and right.
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-title">The Only True Path</div>
-                <div class="info-text">
-                    I chose you, and will keep choosing you every single day, because out of all the infinite paths this vast world offered, holding your hand was the only one that ever made complete sense.
-                </div>
-            </div>
-        </div>
 
-        <div class="gallery">
-            <div class="tilt-card" data-tilt>
-                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop" alt="Love aesthetic">
+            <div class="flow-image">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1000&auto=format&fit=crop" alt="Love aesthetic">
             </div>
-            <div class="tilt-card" data-tilt>
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop" alt="Romantic vibe">
+
+            <div class="flow-item">
+                <h3>A Sanctuary In Your Soul 🌹</h3>
+                <p>True love is discovering a permanent sanctuary inside another person's heart—a sacred, untamed harbor where I can strip away all my armor and simply exist as my truest self. It is an unshakeable promise of infinite patience, gentle forgiveness, and a stubborn, beautiful vow to stand shoulder-to-shoulder no matter what storms try to break our horizon.</p>
             </div>
-            <div class="tilt-card" data-tilt>
-                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=600&auto=format&fit=crop" alt="Couple aesthetic hands">
+
+            <div class="flow-image">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1000&auto=format&fit=crop" alt="Romantic vibe">
             </div>
+
+            <div class="flow-item">
+                <h3>Why Every Beat Belongs To You 🔥</h3>
+                <p>People often wonder what magic made me choose you, blind to the obvious truth: how could any sane soul ever *not* choose you? I am tethered to you because your smile instantly dissolves my darkest shadows. You challenge my mind to expand, believe in me when my own reflection whispers doubt, and love my shattered edges into wholeness.</p>
+            </div>
+
+            <div class="flow-image">
+                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=1000&auto=format&fit=crop" alt="Couple aesthetic hands">
+            </div>
+
+            <div class="flow-item">
+                <h3>The Only Path That Matters ♾️</h3>
+                <p>Out of all the countless, tangled paths this vast universe laid out before my feet, holding your hand was the only one that ever made complete, undeniable sense. It lives deep inside my core, summarized in one eternal truth that guides my every breath: <strong>I LOVE YOU, MUGGU❤️❤️</strong></p>
+            </div>
+
         </div>
 
         <footer>
@@ -322,34 +347,34 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // 1. Background Animated Pink Dots & Lines Constellation
-        const particleCount = 70;
+        // Background Animated Pink Dots Constellation
+        const particleCount = 75;
         const particleGeometry = new THREE.BufferGeometry();
         const particlePositions = new Float32Array(particleCount * 3);
         const particleVelocities = [];
 
         for (let i = 0; i < particleCount * 3; i += 3) {
-            particlePositions[i] = (Math.random() - 0.5) * 40;
-            particlePositions[i + 1] = (Math.random() - 0.5) * 40;
+            particlePositions[i] = (Math.random() - 0.5) * 45;
+            particlePositions[i + 1] = (Math.random() - 0.5) * 45;
             particlePositions[i + 2] = (Math.random() - 0.5) * 20 - 10;
 
             particleVelocities.push({
-                x: (Math.random() - 0.5) * 0.02,
-                y: (Math.random() - 0.5) * 0.02
+                x: (Math.random() - 0.5) * 0.025,
+                y: (Math.random() - 0.5) * 0.025
             });
         }
 
         particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
         const particleMaterial = new THREE.PointsMaterial({
             color: 0xff758c,
-            size: 0.15,
+            size: 0.18,
             transparent: true,
-            opacity: 0.7
+            opacity: 0.75
         });
         const particles = new THREE.Points(particleGeometry, particleMaterial);
         scene.add(particles);
 
-        // 2. Create Heart Shape Geometry
+        // Create Heart Shape Geometry
         const x = 0, y = 0;
         const heartShape = new THREE.Shape();
         heartShape.moveTo(x + 5, y + 5);
@@ -404,17 +429,15 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            // Rotate heart
             heartMesh.rotation.y += 0.015;
 
-            // Animate background particles
             const positions = particleGeometry.attributes.position.array;
             for (let i = 0; i < particleCount; i++) {
                 positions[i * 3] += particleVelocities[i].x;
                 positions[i * 3 + 1] += particleVelocities[i].y;
 
-                if (positions[i * 3] > 20 || positions[i * 3] < -20) particleVelocities[i].x *= -1;
-                if (positions[i * 3 + 1] > 20 || positions[i * 3 + 1] < -20) particleVelocities[i].y *= -1;
+                if (positions[i * 3] > 22 || positions[i * 3] < -22) particleVelocities[i].x *= -1;
+                if (positions[i * 3 + 1] > 22 || positions[i * 3 + 1] < -22) particleVelocities[i].y *= -1;
             }
             particleGeometry.attributes.position.needsUpdate = true;
 
@@ -427,30 +450,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // 3D Tilt Effect for Image Cards
-        const cards = document.querySelectorAll('.tilt-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = ((y - centerY) / centerY) * -15;
-                const rotateY = ((x - centerX) / centerX) * 15;
-
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-                card.style.boxShadow = `0 0 25px rgba(255,117,140,0.4)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-                card.style.boxShadow = `0 0 20px rgba(218,112,214,0.2)`;
-            });
         });
     </script>
 </body>
