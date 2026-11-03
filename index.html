@@ -33,7 +33,7 @@
         .content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 50px 20px;
             display: flex;
@@ -97,9 +97,43 @@
             padding-bottom: 12px;
         }
 
+        /* Two-column layout for info and paragraphs */
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 117, 140, 0.15);
+        }
+
+        .info-row:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .info-title {
+            flex: 0 0 35%;
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #ff758c, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.5;
+        }
+
+        .info-text {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ebdffb;
+        }
+
         .details-list {
             list-style: none;
-            margin-bottom: 30px;
+            width: 100%;
         }
 
         .details-list li {
@@ -109,16 +143,6 @@
             align-items: center;
             gap: 12px;
             color: #ebdffb;
-        }
-
-        .story-paragraph {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            font-weight: 300;
-            color: #ebdffb;
-            margin-top: 15px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 117, 140, 0.15);
         }
 
         .gallery {
@@ -160,6 +184,16 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 4px 20px rgba(218, 112, 214, 0.4);
         }
+
+        @media (max-width: 768px) {
+            .info-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .info-title {
+                flex: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -182,35 +216,68 @@
                 <li><span>🥢🍜</span> <strong>Your favourite food:</strong> Chinese</li>
                 <li><span>👑✨</span> You are a pretty little queen, the prettiest one</li>
             </ul>
-            <p class="story-paragraph">
-                You remember the moment when we first held hands? Awkward, right, but memorable. On this day in the afternoon, we confessed—remember it clearly?? All the moments we spent in the last year were so good and lovely.
-            </p>
-            <p class="story-paragraph">
-                Mugdha, I really am blessed to have u as my wife... Our love has proved we are ready-made for each other. All the times we got caught but didn't give up... All the times you smiled and blushed and all the time u gave me hope to keep trying, is just not suitable for words to explain.
-            </p>
-            <p class="story-paragraph">
-                It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
-            </p>
+            <div class="info-row">
+                <div class="info-title">Our Journey</div>
+                <div class="info-text">
+                    You remember the moment when we first held hands? Awkward, right, but memorable. On this day in the afternoon, we confessed—remember it clearly?? All the moments we spent in the last year were so good and lovely.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">My Blessing</div>
+                <div class="info-text">
+                    Mugdha, I really am blessed to have u as my wife... Our love has proved we are ready-made for each other. All the times we got caught but didn't give up... All the times you smiled and blushed and all the time u gave me hope to keep trying, is just not suitable for words to explain.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">The Absolute Truth</div>
+                <div class="info-text">
+                    It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
+                </div>
+            </div>
         </div>
 
         <div class="section-card">
             <h2>What Is Love?</h2>
-            <p class="story-paragraph">
-                Before you, love was just a word found in stories and poems. But spending this past year with you taught me its true definition. Love is not about grand gestures every single day; it is found in the quiet glances, the way you laugh at my silliest jokes, and how effortlessly you make everything feel right even in the middle of chaos.
-            </p>
-            <p class="story-paragraph">
-                Love is finding a permanent home in someone else's soul, a safe harbor where you can drop all your armor and simply be. It is patience, forgiveness, and an unshakable choice to stand side-by-side no matter what life throws our way.
-            </p>
+            <div class="info-row">
+                <div class="info-title">Beyond Words</div>
+                <div class="info-text">
+                    Before you, love was just a word found in stories and poems. But spending this past year with you taught me its true definition. Love is not about grand gestures every single day; it is found in the quiet glances, the way you laugh at my silliest jokes, and how effortlessly you make everything feel right even in the middle of chaos.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">A Safe Haven</div>
+                <div class="info-text">
+                    Love is finding a permanent home in someone else's soul, a safe harbor where you can drop all your armor and simply be. It is patience, forgiveness, and an unshakable choice to stand side-by-side no matter what life throws our way.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">Silent Understanding</div>
+                <div class="info-text">
+                    It is the comfort of sitting in absolute silence without feeling the need to fill the air, knowing that your presence alone is enough to heal any heavy day.
+                </div>
+            </div>
         </div>
 
         <div class="section-card">
             <h2>Why Am I With You?</h2>
-            <p class="story-paragraph">
-                People often ask what made me choose you, but the real question is how could anyone *not* choose you? I am with you because your smile has the power to fix my worst days, and your presence brings a peace to my mind that I never knew existed.
-            </p>
-            <p class="story-paragraph">
-                You challenge me to grow, you believe in me when I doubt myself, and you love me with all my flaws. Every second spent with you feels effortless and sacred. I am with you because out of all the paths this world offered, holding your hand was the only one that ever made complete sense.
-            </p>
+            <div class="info-row">
+                <div class="info-title">Your Light</div>
+                <div class="info-text">
+                    People often ask what made me choose you, but the real question is how could anyone *not* choose you? I am with you because your smile has the power to fix my worst days, and your presence brings a peace to my mind that I never knew existed.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">My Inspiration</div>
+                <div class="info-text">
+                    You challenge me to grow, you believe in me when I doubt myself, and you love me with all my flaws. Every second spent with you feels effortless, sacred, and entirely right.
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-title">The Only Path</div>
+                <div class="info-text">
+                    I am with you because out of all the paths this world offered, holding your hand was the only one that ever made complete sense to my heart.
+                </div>
+            </div>
         </div>
 
         <div class="gallery">
@@ -233,7 +300,7 @@
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js 3D Upright Rotating Heart Setup
+        // Three.js Scene Setup (Upright Heart + Background Constellation Particles)
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -243,7 +310,41 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Create Heart Shape Geometry
+        // 1. Background Animated Pink Dots & Lines Constellation
+        const particleCount = 70;
+        const particleGeometry = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        const particleVelocities = [];
+
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            particlePositions[i] = (Math.random() - 0.5) * 40;
+            particlePositions[i + 1] = (Math.random() - 0.5) * 40;
+            particlePositions[i + 2] = (Math.random() - 0.5) * 20 - 10;
+
+            particleVelocities.push({
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02
+            });
+        }
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        const particleMaterial = new THREE.PointsMaterial({
+            color: 0xff758c,
+            size: 0.15,
+            transparent: true,
+            opacity: 0.7
+        });
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        // Connecting lines mesh setup
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0xda70d6,
+            transparent: true,
+            opacity: 0.15
+        });
+
+        // 2. Create Heart Shape Geometry
         const x = 0, y = 0;
         const heartShape = new THREE.Shape();
         heartShape.moveTo(x + 5, y + 5);
@@ -297,7 +398,21 @@
         // Animation Loop
         function animate() {
             requestAnimationFrame(animate);
+
+            // Rotate heart
             heartMesh.rotation.y += 0.015;
+
+            // Animate background particles
+            const positions = particleGeometry.attributes.position.array;
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 3] += particleVelocities[i].x;
+                positions[i * 3 + 1] += particleVelocities[i].y;
+
+                if (positions[i * 3] > 20 || positions[i * 3] < -20) particleVelocities[i].x *= -1;
+                if (positions[i * 3 + 1] > 20 || positions[i * 3 + 1] < -20) particleVelocities[i].y *= -1;
+            }
+            particleGeometry.attributes.position.needsUpdate = true;
+
             renderer.render(scene, camera);
         }
         animate();
