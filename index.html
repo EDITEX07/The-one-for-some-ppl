@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy anniversary..Muggu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        header {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+
+        .hero-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 100%;
+        }
+
+        .hero-message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 100%;
+            text-align: left;
+        }
+
+        .section-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .details-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .details-list li {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .story-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-top: 15px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 50px;
+            perspective: 1000px;
+        }
+
+        .tilt-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tilt-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateZ(30px);
+        }
+
+        footer {
+            margin-bottom: 60px;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <div class="content">
+        <header>
+            <h1>Happy anniversary..Muggu</h1>
+        </header>
+
+        <div class="hero-message">
+            <p>Congrats my love on completing the first year of love, this proves our love as a true one ❤️</p>
+        </div>
+
+        <div class="section-card">
+            <h2>What I Know</h2>
+            <ul class="details-list">
+                <li><span>💜💗</span> <strong>Your favourite colour:</strong> Purple, Pink</li>
+                <li><span>🥢🍜</span> <strong>Your favourite food:</strong> Chinese</li>
+                <li><span>👑✨</span> You are a pretty little queen, the prettiest one</li>
+            </ul>
+            <p class="story-paragraph">
+                You remember the moment when we first held hands? Awkward, right, but memorable. On this day in the afternoon, we confessed—remember it clearly?? All the moments we spent in the last year were so good and lovely. Mugdha, I really am blessed to have u as my wife... Our love has proved we are ready-made for each other. All the times we got caught but didn't give up... All the times you smiled and blushed and all the time u gave me hope to keep trying, is just not suitable for words to explain. It lies deeply in my heart and can be expressed only through one line, that is <strong>I LOVE YOU, MUGGU❤️❤️</strong>
+            </p>
+        </div>
+
+        <div class="gallery">
+            <div class="tilt-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop" alt="Love aesthetic">
+            </div>
+            <div class="tilt-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop" alt="Romantic vibe">
+            </div>
+            <div class="tilt-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=600&auto=format&fit=crop" alt="Couple aesthetic hands">
+            </div>
+        </div>
+
+        <footer>
+            <div class="signature">to my wife from her husband, happy anniversary</div>
+        </footer>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Three.js 3D Rotating Heart Setup
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Create Heart Shape Geometry
+        const x = 0, y = 0;
+        const heartShape = new THREE.Shape();
+        heartShape.moveTo(x + 5, y + 5);
+        heartShape.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y);
+        heartShape.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7);
+        heartShape.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19);
+        heartShape.bezierCurveTo(x + 13, y + 15.4, x + 16, y + 11, x + 16, y + 7);
+        heartShape.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y);
+        heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
+
+        const extrudeSettings = {
+            depth: 4,
+            bevelEnabled: true,
+            bevelSegments: 5,
+            steps: 2,
+            bevelSize: 2,
+            bevelThickness: 2
+        };
+
+        const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+        geometry.center(); // Center the geometry origin
+
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0xff3366,
+            roughness: 0.3,
+            metalness: 0.2,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.1,
+            emissive: 0x550022
+        });
+
+        const heartMesh = new THREE.Mesh(geometry, material);
+        heartMesh.scale.set(0.25, 0.25, 0.25);
+        scene.add(heartMesh);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xff80bf, 2, 50);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        const pointLight2 = new THREE.PointLight(0xda70d6, 1.5, 50);
+        pointLight2.position.set(-10, -10, 10);
+        scene.add(pointLight2);
+
+        camera.position.z = 15;
+
+        // Animation Loop (Rotating on Y axis)
+        function animate() {
+            requestAnimationFrame(animate);
+            heartMesh.rotation.y += 0.015;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive handling
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 3D Tilt Effect for Image Cards
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                card.style.boxShadow = `${-rotateY}px ${rotateX}px 25px rgba(0,0,0,0.3)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)';`;
+                card.style.boxShadow = `0 10px 30px rgba(0,0,0,0.2)`;
+            });
+        });
+    </script>
+</body>
+</html>
